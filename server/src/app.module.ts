@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
 import { URI_DB } from './constants'
+import { FileModule } from './file/file.module'
 import { TrackModule } from './track/track.module'
+import { ServeStaticModule } from '@nestjs/serve-static'
+import * as path from 'path'
 
 @Module({
-  imports: [MongooseModule.forRoot(URI_DB), TrackModule],
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: path.resolve(__dirname, 'static'),
+    }),
+    MongooseModule.forRoot(URI_DB),
+    TrackModule,
+    FileModule,
+  ],
 })
 export class AppModule {}
