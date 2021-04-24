@@ -10,8 +10,8 @@ import { Track, TrackDocument } from './schema/track.schema'
 @Injectable()
 export class TrackService {
   constructor(
-    @InjectModel(Track.name) private trackModel: Model<TrackDocument>,
     @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
+    @InjectModel(Track.name) private trackModel: Model<TrackDocument>,
     private fileService: FileService
   ) {}
 
